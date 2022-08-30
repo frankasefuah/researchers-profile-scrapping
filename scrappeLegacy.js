@@ -5,15 +5,13 @@ const express = require('express')
 
 const app = express()
 
-// Url to scrape 
-const url = 'https://dcs.ug.edu.gh/faculty'
+const url = 'https://www.theguardian.com/uk'
 
 axios(url)
     .then(res => {
-        const html = res.data
-        const $ = cheerio.load(html)
-        const profiles = []
-        console.log(html);
+        const info = res.data
+        const $ = cheerio.load(info)
+        const articles = []
 
         $('.fc-item__title', info).each(function () {
             const title = $(this).text()
